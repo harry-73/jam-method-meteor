@@ -5,10 +5,16 @@ import { onMounted } from 'vue'
 
 onMounted(() => {
   console.log('Home mounted')
-  createTodo({ text: 'Meteor is great' }).then(() => { console.log('Link created') }).catch((error) => { console.error("CreateTodo", error) });
+  createEntry()
 })
 
-
+async function createEntry() {
+  try {
+    await createTodo({ text: 'Meteor is great' });
+  } catch (error) {
+    console.error('CreateTodo Error', error)
+  }
+}
 
 </script>
 
@@ -17,4 +23,3 @@ onMounted(() => {
 
   <Info />
 </template>
-../methods/todos
